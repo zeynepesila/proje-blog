@@ -16,21 +16,21 @@ public class RolesServiceImpl implements RolesService {
 
     @Override
     public List<Roles> getAllRoles() {
-        return RolesRepository.findAll();
+        return rolesRepository.findAll();
     }
 
     @Override
     public Roles getRoleById(UUID id) {
-        return RolesRepository.findById(id).orElse(null);
+        return rolesRepository.findById(id).orElse(null);
     }
 
     @Override
     public Roles createRole(Roles roles) {
-        return RolesRepository.save(roles);
+        return rolesRepository.save(roles);
     }
 
     @Override
     public void deleteRole(UUID id) {
-        RolesRepository.deleteById(id);
+        rolesRepository.deleteById(id);
     }
 }

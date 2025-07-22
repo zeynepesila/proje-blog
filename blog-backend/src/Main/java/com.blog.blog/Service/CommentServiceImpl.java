@@ -16,21 +16,21 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     public List<Comment> getAllComments() {
-        return CommentRepository.findAll();
+        return commentRepository.findAll();
     }
 
     @Override
     public Comment getCommentById(UUID id) {
-        return CommentRepository.findById(id).orElse(null);
+        return commentRepository.findById(id).orElse(null);
     }
 
     @Override
     public Comment createComment(Comment comment) {
-        return CommentRepository.save(comment);
+        return commentRepository.save(comment);
     }
 
     @Override
     public void deleteComment(UUID id) {
-        CommentRepository.deleteById(id);
+        commentRepository.deleteById(id);
     }
 }

@@ -1,7 +1,7 @@
   package com.blog.blog.Controller;
 
-import com.blog.blog.model.Post;
-import com.blog.blog.repository.PostRepository;
+import com.blog.blog.Model.Post;
+import com.blog.blog.Repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
