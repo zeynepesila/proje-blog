@@ -1,3 +1,5 @@
+package com.blog.blog.Model;
+
 import com.blog.blog.Model.Post;
 import jakarta.persistence.*;
 import java.util.UUID;

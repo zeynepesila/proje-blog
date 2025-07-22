@@ -1,4 +1,4 @@
-package com.blog.blog.model;
+package com.blog.blog.Model;
 
 import jakarta.persistence.*;
 import java.util.UUID;
@@ -20,7 +20,7 @@ public class User {
 
    @ManyToOne
   @JoinColumn(name = "roleId")
-    private com.blog.blog.model.Roles role;
+    private Roles role;
 
 
 
@@ -56,13 +56,13 @@ public class User {
         this.passwordHash = passwordHash;
     }
 
-    private com.blog.blog.model.Roles roleId;
+    private Roles roleId;
 
-    public com.blog.blog.model.Roles getRole() {
+    public Roles getRole() {
         return roleId;
     }
 
-    public void setRole(com.blog.blog.model.Roles roleId) {
+    public void setRole(Roles roleId) {
         this.roleId = roleId;
     }
 }
