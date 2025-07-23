@@ -18,13 +18,13 @@ public class CommentController {
     // Tüm yorumları getir
     @GetMapping
     public List<Comment> getAllComments() {
-        return CommentRepository.findAll();
+        return commentRepository.findAll();
     }
 
     // ID'ye göre yorumu getir
     @GetMapping("/{id}")
     public Comment getCommentById(@PathVariable UUID id) {
-        return CommentRepository.findById(id).orElse(null);
+        return commentRepository.findById(id).orElse(null);
     }
 
     // Yeni yorum oluştur
@@ -33,12 +33,12 @@ public class CommentController {
         if (comment.getCommentId() == null) {
             comment.setCommentId(UUID.randomUUID());
         }
-        return CommentRepository.save(comment);
+        return commentRepository.save(comment);
     }
 
     // Yorumu sil
     @DeleteMapping("/{id}")
     public void deleteComment(@PathVariable UUID id) {
-        CommentRepository.deleteById(id);
+        commentRepository.deleteById(id);
     }
 }

@@ -6,6 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.UUID;
 
 public interface UserRepository extends JpaRepository<com.blog.blog.Model.User, UUID> {
-    static User save(User user) {
+    static User Save(User user) {
     }
 }

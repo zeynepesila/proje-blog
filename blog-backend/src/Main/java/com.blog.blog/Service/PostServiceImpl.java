@@ -16,21 +16,21 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public List<Post> getAllPosts() {
-        return PostRepository.findAll();
+        return postRepository.findAll();
     }
 
     @Override
     public Post getPostById(UUID id) {
-        return PostRepository.findById(id).orElse(null);
+        return postRepository.findById(id).orElse(null);
     }
 
     @Override
     public Post createPost(Post post) {
-        return PostRepository.save(post);
+        return postRepository.Save(post);
     }
 
     @Override
     public void deletePost(UUID id) {
-        PostRepository.deleteById(id);
+        postRepository.deleteById(id);
     }
 }
