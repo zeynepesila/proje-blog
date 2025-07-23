@@ -1,4 +1,4 @@
-  package com.blog.blog.Controller;
+package com.blog.blog.Controller;
 
 import com.blog.blog.Model.Post;
 import com.blog.blog.Repository.PostRepository;
@@ -15,19 +15,21 @@ public class PostController {
     @Autowired
     private PostRepository postRepository;
 
-    public <Post> List<Post> getAllPosts() {
-
+    // Tüm postları getir
+    @GetMapping
+    public List<Post> getAllPosts() {
         return postRepository.findAll();
     }
 
+    // Yeni post oluştur
     @PostMapping
-    public <Post> Post createPost(@RequestBody Post post) {
-        post.toString ();
+    public Post createPost(@RequestBody Post post) {
         return postRepository.save(post);
     }
 
-    public <Post> Post getPostById(@PathVariable UUID id) {
-
+    // ID'ye göre post getir
+    @GetMapping("/{id}")
+    public Post getPostById(@PathVariable UUID id) {
         return postRepository.findById(id).orElse(null);
     }
 }

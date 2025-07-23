@@ -8,6 +8,6 @@ import java.util.UUID;
 public interface CommentService {
     List<Comment> getAllComments();
     Comment getCommentById(UUID id);
-    Object createComment(Comment comment);
+    Comment createComment(Comment comment);
     void deleteComment(UUID id);
 }

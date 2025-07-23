@@ -24,7 +24,7 @@ public class RolesController {
     // ID'ye göre rol getir
     @GetMapping("/{id}")
     public Roles getRoleById(@PathVariable UUID id) {
-        return RolesRepository.findById(id).orElse(null);
+        return rolesRepository.findById(id).orElse(null);
     }
 
     // Yeni rol oluştur
@@ -33,7 +33,7 @@ public class RolesController {
         if (role.getRoleId() == null) {
             role.setRoleId(UUID.randomUUID());
         }
-        return RolesRepository.save(role);
+        return rolesRepository.save(role);
     }
 
     // Rol sil

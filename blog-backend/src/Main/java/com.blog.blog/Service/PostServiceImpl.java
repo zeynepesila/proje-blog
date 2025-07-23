@@ -26,7 +26,7 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public Post createPost(Post post) {
-        return postRepository.Save(post);
+        return postRepository.save(post);
     }
 
     @Override
