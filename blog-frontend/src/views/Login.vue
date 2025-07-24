@@ -34,23 +34,30 @@ export default {
     };
   },
   methods: {
-    async handleLogin() {
-      try {
-        const response = await axios.post('http://localhost:8080/api/auth/login', {
-          email: this.email,
-          passwordHash: this.password  // backend'in beklediği alan buysa doğru
-        });
+   async handleLogin() {
+  try {
+    const response = await axios.post('http://localhost:8080/api/auth/login', {
+      email: this.email,
+      passwordHash: this.password
+    });
 
-        alert(response.data); // örn: "Login successful"
+    const user = response.data;
+    // Backend'den gelen kullanıcı verisini localStorage'a kaydet
+    localStorage.setItem('token', user.token);
+    localStorage.setItem('role', user.role);
 
-        // Giriş başarılı ise yönlendirme yapabilirsin
-        // this.$router.push('/dashboard');
-        
-      } catch (error) {
-        alert("Giriş başarısız");
-        console.error(error);
-      }
+    // Rolüne göre yönlendir
+    if (user.role === 'admin') {
+      this.$router.push('/admin');
+    } else {
+      this.$router.push('/'); // Normal kullanıcı ana sayfasına
     }
+
+  } catch (error) {
+    alert("Giriş başarısız");
+    console.error(error);
+  }
+}
   }
 };
 </script>
