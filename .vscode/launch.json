@@ -1,12 +1,19 @@
 {
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "type": "edge",
-            "request": "launch",
-            "name": "Launch Edge against localhost",
-            "url": "http://localhost:8080",
-            "webRoot": "${workspaceFolder}"
-        }
-    ]
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Node.js Uygulamasını Başlat",
+      "program": "${workspaceFolder}/app.js",
+      "skipFiles": ["<node_internals>/**"]
+    },
+    {
+      "name": "Launch Edge",
+      "type": "msedge",
+      "request": "launch",
+      "url": " http://localhost:8080/",
+      "webRoot": "${workspaceFolder}"
+    }
+  ]
 }

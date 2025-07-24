@@ -1,31 +1,28 @@
 <template>
-    <div class="login-container">
-        <h2>LOG IN</h2>
-        <form @submit.prevent="handleLogin">
-            <div class="form-group">
-                <label for="email">E-posta:</label>
-                <input type="email" v-model="email" id="email" required/>
-            </div>
-            
-            <div class="form-group">
-            <label for="password">Passeord:</label>
-            <input type="password" v-model="password" id="password" required/>
-            </div>
+  <div class="login-container">
+    <h2>LOG IN</h2>
+    <form @submit.prevent="handleLogin">
+      <div class="form-group">
+        <label for="email">E-posta:</label>
+        <input type="email" v-model="email" id="email" required />
+      </div>
 
-            <button type="submit">Log In</button>
+      <div class="form-group">
+        <label for="password">Password:</label> <!-- 'Passeord' yerine 'Password' -->
+        <input type="password" v-model="password" id="password" required />
+      </div>
 
-        </form>
-        
-        <p class="signup-link">
+      <button type="submit">Log In</button>
+    </form>
 
-             Not a member yet?
-             <router-link to="/signup">Sign Up </router-link>
-
-        </p>
-
-    </div>
+    <p class="signup-link">
+      Not a member yet?
+      <router-link to="/signup">Sign Up</router-link>
+    </p>
+  </div>
 </template>
-<script> 
+
+<script>
 import axios from 'axios';
 
 export default {
@@ -41,26 +38,31 @@ export default {
       try {
         const response = await axios.post('http://localhost:8080/api/auth/login', {
           email: this.email,
-          passwordHash: this.password   // 👈 backend’in beklediği alan ismi bu!
+          passwordHash: this.password  // backend'in beklediği alan buysa doğru
         });
 
-        // Yanıt başarılıysa
-        alert(response.data); // örneğin: "Login successful"
-        
-        // Giriş başarılıysa başka sayfaya yönlendirebilirsin
-        // this.$router.push("/dashboard");
+        alert(response.data); // örn: "Login successful"
 
+        // Giriş başarılı ise yönlendirme yapabilirsin
+        // this.$router.push('/dashboard');
+        
       } catch (error) {
-        // Hata olursa
         alert("Giriş başarısız");
         console.error(error);
       }
     }
   }
 };
-
-
 </script>
 
 <style>
-</style>;
+/* İsteğe bağlı: temel stil örneği */
+.login-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+.form-group {
+  margin-bottom: 15px;
+}
+</style>
