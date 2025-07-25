@@ -1,12 +1,13 @@
 C:\Users\Zeynep Esila\OneDrive\Desktop\proje blog\blog-backend\src\main\java\com.blog.blog\Model\Post.java
-C:\Users\Zeynep Esila\OneDrive\Desktop\proje blog\blog-backend\src\main\java\com.blog.blog\BlogApplication.java
 C:\Users\Zeynep Esila\OneDrive\Desktop\proje blog\blog-backend\src\main\java\com.blog.blog\Model\Roles.java
 C:\Users\Zeynep Esila\OneDrive\Desktop\proje blog\blog-backend\src\main\java\com.blog.blog\Repository\RolesRepository.java
+C:\Users\Zeynep Esila\OneDrive\Desktop\proje blog\blog-backend\src\main\java\BlogApplication.java
 C:\Users\Zeynep Esila\OneDrive\Desktop\proje blog\blog-backend\src\main\java\com.blog.blog\Service\RolesServiceImpl.java
 C:\Users\Zeynep Esila\OneDrive\Desktop\proje blog\blog-backend\src\main\java\com.blog.blog\Model\Comment.java
 C:\Users\Zeynep Esila\OneDrive\Desktop\proje blog\blog-backend\src\main\java\com.blog.blog\Service\UserService.java
 C:\Users\Zeynep Esila\OneDrive\Desktop\proje blog\blog-backend\src\main\java\com.blog.blog\Controller\UserController.java
 C:\Users\Zeynep Esila\OneDrive\Desktop\proje blog\blog-backend\src\main\java\com.blog.blog\Repository\CommentRepository.java
+C:\Users\Zeynep Esila\OneDrive\Desktop\proje blog\blog-backend\src\main\java\com.blog.blog\DTO\RegisterRequest.java
 C:\Users\Zeynep Esila\OneDrive\Desktop\proje blog\blog-backend\src\main\java\com.blog.blog\Model\User.java
 C:\Users\Zeynep Esila\OneDrive\Desktop\proje blog\blog-backend\src\main\java\com.blog.blog\Controller\PostController.java
 C:\Users\Zeynep Esila\OneDrive\Desktop\proje blog\blog-backend\src\main\java\com.blog.blog\Controller\RolesController.java

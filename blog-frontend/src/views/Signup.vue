@@ -44,7 +44,6 @@ export default {
   name: 'Signup',
   data() {
     return {
-      name: '',
       username: '',
       email: '',
       password: '',
@@ -55,7 +54,6 @@ export default {
     async handleSignup() {
       try {
         const response = await axios.post('http://localhost:8080/api/auth/register', {
-          name: this.name,
           username: this.username,
           email: this.email,
           passwordHash: this.password,

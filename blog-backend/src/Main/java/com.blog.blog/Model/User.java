@@ -6,8 +6,8 @@ import java.util.UUID;
 @Entity
 public class User {
 
-   @Id
-  @GeneratedValue
+    @Id
+    @GeneratedValue
     private UUID userId;
 
     private String name;
@@ -18,11 +18,9 @@ public class User {
     @Column(nullable = false)
     private String passwordHash;
 
-   @ManyToOne
-  @JoinColumn(name = "roleId")
+    @ManyToOne
+    @JoinColumn(name = "roleId")
     private Roles role;
-
-
 
     public UUID getUserId() {
         return userId;
@@ -56,13 +54,11 @@ public class User {
         this.passwordHash = passwordHash;
     }
 
-    private Roles roleId;
-
     public Roles getRole() {
-        return roleId;
+        return role;
     }
 
-    public void setRole(Roles roleId) {
-        this.roleId = roleId;
+    public void setRole(Roles role) {
+        this.role = role;
     }
 }

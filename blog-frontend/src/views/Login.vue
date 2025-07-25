@@ -8,16 +8,16 @@
       </div>
 
       <div class="form-group">
-        <label for="password">Password:</label> <!-- 'Passeord' yerine 'Password' -->
+        <label for="password">Şifre:</label>
         <input type="password" v-model="password" id="password" required />
       </div>
 
-      <button type="submit">Log In</button>
+      <button type="submit">Giriş Yap</button>
     </form>
 
     <p class="signup-link">
-      Not a member yet?
-      <router-link to="/signup">Sign Up</router-link>
+      Henüz üye değil misiniz?
+      <router-link to="/signup">Kayıt Ol</router-link>
     </p>
   </div>
 </template>
@@ -34,42 +34,56 @@ export default {
     };
   },
   methods: {
-   async handleLogin() {
-  try {
-    const response = await axios.post('http://localhost:8080/api/auth/login', {
-      email: this.email,
-      passwordHash: this.password
-    });
+    async handleLogin() {
+      try {
+        const response = await axios.post('http://localhost:8080/api/auth/login', {
+          email: this.email,
+          password: this.password // Eğer backend passwordHash istiyorsa bunu değiştir
+        });
 
-    const user = response.data;
-    // Backend'den gelen kullanıcı verisini localStorage'a kaydet
-    localStorage.setItem('token', user.token);
-    localStorage.setItem('role', user.role);
+        const user = response.data;
 
-    // Rolüne göre yönlendir
-    if (user.role === 'admin') {
-      this.$router.push('/admin');
-    } else {
-      this.$router.push('/'); // Normal kullanıcı ana sayfasına
+        // localStorage'a verileri kaydet
+        localStorage.setItem('token', user.token);
+        localStorage.setItem('role', user.role);
+
+        // Rol kontrolü yaparak yönlendirme
+        if (user.role === 'admin') {
+          this.$router.push('/admin');
+        } else {
+          this.$router.push('/');
+        }
+
+      } catch (error) {
+        const message = error.response?.data?.message || "Giriş başarısız. Lütfen tekrar deneyin.";
+        alert(message);
+        console.error("Giriş hatası:", error);
+      }
     }
-
-  } catch (error) {
-    alert("Giriş başarısız");
-    console.error(error);
-  }
-}
   }
 };
 </script>
 
 <style>
-/* İsteğe bağlı: temel stil örneği */
 .login-container {
   max-width: 400px;
   margin: 0 auto;
   padding: 20px;
 }
+
 .form-group {
   margin-bottom: 15px;
+}
+
+button {
+  padding: 8px 16px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.signup-link {
+  margin-top: 10px;
 }
 </style>

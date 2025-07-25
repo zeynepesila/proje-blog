@@ -1,3 +1,4 @@
+com\blog\blog\DTO\RegisterRequest.class
 com\blog\blog\Model\Post.class
 com\blog\blog\Repository\PostRepository.class
 com\blog\blog\Service\RolesService.class
@@ -5,10 +6,10 @@ com\blog\blog\Controller\RolesController.class
 com\blog\blog\Service\UserServiceImpl.class
 com\blog\blog\Controller\CommentController.class
 com\blog\blog\Service\CommentService.class
-com\blog\blog\BlogApplication.class
 com\blog\blog\Service\CommentServiceImpl.class
 com\blog\blog\Service\UserService.class
 com\blog\blog\Service\PostServiceImpl.class
+BlogApplication.class
 com\blog\blog\Controller\PostController.class
 com\blog\blog\Controller\UserController.class
 com\blog\blog\Model\Comment.class
