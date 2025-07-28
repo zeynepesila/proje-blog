@@ -1,9 +1,12 @@
 package com.blog.blog.Controller;
 
 import com.blog.blog.DTO.RegisterRequest;
+import com.blog.blog.Model.Roles;
 import com.blog.blog.Model.User;
+import com.blog.blog.Repository.RolesRepository;
 import com.blog.blog.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -14,10 +17,16 @@ public class AuthController {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private RolesRepository rolesRepository;
+
+    // Şifre hashlemek ve kontrol etmek için
+    private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
     @PostMapping("/login")
     public String login(@RequestBody User loginUser) {
         User user = userRepository.findByEmail(loginUser.getEmail());
-        if (user != null && user.getPasswordHash().equals(loginUser.getPasswordHash())) {
+        if (user != null && passwordEncoder.matches(loginUser.getPasswordHash(), user.getPasswordHash())) {
             return "Login successful";
         } else {
             return "Invalid credentials";
@@ -34,8 +43,15 @@ public class AuthController {
         user.setName(request.getName());
         user.setUsername(request.getUsername());
         user.setEmail(request.getEmail());
-        user.setPasswordHash(request.getPassword()); // Dilersen burada hash yapabilirsin
-        user.setRole(request.getRole());
+
+        String encodedPassword = passwordEncoder.encode(request.getPassword());
+        user.setPasswordHash(encodedPassword);
+
+        Roles role = rolesRepository.findByName(request.getRole());
+        if (role == null) {
+            return "Role not found";
+        }
+        user.setRole(role);
 
         userRepository.save(user);
         return "Registration successful";

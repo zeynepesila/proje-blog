@@ -38,16 +38,14 @@ export default {
       try {
         const response = await axios.post('http://localhost:8080/api/auth/login', {
           email: this.email,
-          password: this.password // Eğer backend passwordHash istiyorsa bunu değiştir
+          password: this.password
         });
 
         const user = response.data;
 
-        // localStorage'a verileri kaydet
-        localStorage.setItem('token', user.token);
-        localStorage.setItem('role', user.role);
+        localStorage.setItem('token', user.token); // opsiyonel
+        localStorage.setItem('role', user.role);   // opsiyonel
 
-        // Rol kontrolü yaparak yönlendirme
         if (user.role === 'admin') {
           this.$router.push('/admin');
         } else {
