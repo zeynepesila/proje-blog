@@ -20,7 +20,7 @@ public class User {
 
     @ManyToOne
     @JoinColumn(name = "roleId")
-    private Roles role;
+    private Role role;
 
     public UUID getUserId() {
         return userId;
@@ -54,11 +54,11 @@ public class User {
         this.passwordHash = passwordHash;
     }
 
-    public Roles getRole() {
+    public Role getRole() {
         return role;
     }
 
-    public void setRole(Roles role) {
+    public void setRole(Role role) {
         this.role = role;
     }
 }

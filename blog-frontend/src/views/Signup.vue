@@ -15,7 +15,7 @@
 
       <div class="form-group">
         <label for="password">Password:</label>
-        <input type="password" v-model="password" id="password" required />
+        <input type="password" v-model="passwordHash" id="password" required />
       </div>
 
       <div class="form-group">
@@ -43,10 +43,11 @@ import axios from 'axios';
 export default {
   name: 'Signup',
   data() {
+
     return {
       username: '',
       email: '',
-      password: '',
+      passwordHash: '',
       role: ''
     };
   },
@@ -60,7 +61,7 @@ export default {
           role: this.role
         });
 
-        alert("Kayıt başarılı! Giriş sayfasına yönlendiriliyorsunuz.");
+        alert("Kayit başarili! Giriş sayfasina yönlendiriliyorsunuz.");
         this.$router.push('/');
       } catch (error) {
         alert("Kayıt başarısız! Lütfen tekrar deneyin.");
