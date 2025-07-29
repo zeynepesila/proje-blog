@@ -1,12 +1,18 @@
 package com.blog.blog.Controller;
+
 import com.blog.blog.DTO.RegisterRequest;
 import com.blog.blog.Model.Role;
 import com.blog.blog.Model.User;
 import com.blog.blog.Repository.RoleRepository;
 import com.blog.blog.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+import org.springframework.security.crypto.bcrypt
+
+        .BCryptPasswordEncoder;
+
 import org.springframework.web.bind.annotation.*;
+
 import java.util.Optional;
 
 @RestController
@@ -18,7 +24,7 @@ public class AuthController {
     private UserRepository userRepository;
 
     @Autowired
-    private RoleRepository rolesRepository;
+    private RoleRepository roleRepository;
 
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
@@ -47,13 +53,19 @@ public class AuthController {
         String encodedPassword = passwordEncoder.encode(request.getPassword());
         user.setPasswordHash(encodedPassword);
 
-        Role role = roleRepository.findByName(request.getRole());
-        if (role == null) {
-            return "Role not found";
+        Optional<Role> optionalRole = roleRepository.findByName("ROLE_USER");
+
+        Role role;
+        if (optionalRole.isPresent()) {
+            role = optionalRole.get();
+        } else {
+            throw new RuntimeException("Role not found");
         }
+
         user.setRole(role);
 
         userRepository.save(user);
         return "Registration successful";
     }
+
 }

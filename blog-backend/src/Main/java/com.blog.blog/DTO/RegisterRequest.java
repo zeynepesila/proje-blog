@@ -3,10 +3,9 @@ package com.blog.blog.DTO;
 public class RegisterRequest {
     private String username;
     private String email;
-    private String passwordHash;
+    private String password;
     private String role;
 
-    // Getter ve Setter'lar
 
     public String getUsername() {
         return username;
@@ -23,10 +22,10 @@ public class RegisterRequest {
     }
 
     public String getPassword() {
-        return passwordHash;
+        return password;
     }
     public void setPassword(String password) {
-        this.passwordHash = password;
+        this.password = password;
     }
 
     public String getRole() {
