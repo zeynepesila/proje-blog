@@ -7,9 +7,9 @@ import com.blog.blog.Repository.RoleRepository;
 import com.blog.blog.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import org.springframework.security.crypto.bcrypt
+//import org.springframework.security.crypto.bcrypt
 
-        .BCryptPasswordEncoder;
+//.BCryptPasswordEncoder;
 
 import org.springframework.web.bind.annotation.*;
 
